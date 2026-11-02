@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "FX Replay Kısayolları",
+  "version": "1.11",
+  "description": "Yalnız app.fxreplay.com'da Shift+Z/A/S tuşlarını FX Replay kısayollarına çevirir; Shift+1 ve Shift+2 dört adımda 5M, 45M, 4H giriş ve kapanış görüntüsünü imleçle birlikte işlemin klasörüne kaydeder, Alt+1 ve Alt+2 o yuvanın işlemini front run olarak kapatır.",
+  "permissions": ["downloads", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://app.fxreplay.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_origin_as_fallback": true
+    }
+  ]
+}
